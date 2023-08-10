@@ -1,5 +1,12 @@
 # This script deletes all threat indicators by a specific source.
 # To run this script, you must have the Az PowerShell module installed. For more information, see https://docs.microsoft.com/powershell/azure/install-az-ps
+
+# Define necessary variables, such as SubscriptionId, LogAnalyticsResourceGroup, LogAnalyticsWorkspaceName, and LaAPIHeaders
+$SubscriptionId = "Insert your subscription ID here"
+$LogAnalyticsResourceGroup = "Insert your Log Analytics resource group here"
+$LogAnalyticsWorkspaceName = "Insert your Log Analytics workspace name here"
+
+# This function gets all threat indicators from the Log Analytics workspace and deletes them.
 function Get-AllThreatIndicators {
     $ThreatIndicatorsApi = "https://management.azure.com/subscriptions/$SubscriptionId/resourcegroups/$LogAnalyticsResourceGroup/providers/Microsoft.OperationalInsights/workspaces/$LogAnalyticsWorkspaceName/providers/Microsoft.SecurityInsights/threatIntelligence/"
     $SECURITY_INSIGHTS_API_VERSION = "api-version=2022-07-01-preview"
@@ -86,11 +93,6 @@ function Get-AllThreatIndicators {
 
     } while ($getAllIndicatorsUri -ne $null)
 }
-
-# Define necessary variables, such as SubscriptionId, LogAnalyticsResourceGroup, LogAnalyticsWorkspaceName, and LaAPIHeaders
-$SubscriptionId = "Insert your subscription ID here"
-$LogAnalyticsResourceGroup = "Insert your Log Analytics resource group here"
-$LogAnalyticsWorkspaceName = "Insert your Log Analytics workspace name here"
 
 # Get the Log Analytics API headers. Requires login with az login first.
 function Get-LaAPIHeaders {
