@@ -2,9 +2,15 @@
 # To run this script, you must have the Az PowerShell module installed. For more information, see https://docs.microsoft.com/powershell/azure/install-az-ps
 
 # Define necessary variables, such as SubscriptionId, LogAnalyticsResourceGroup, LogAnalyticsWorkspaceName, and LaAPIHeaders
-$SubscriptionId = "Insert your subscription ID here"
-$LogAnalyticsResourceGroup = "Insert your Log Analytics resource group here"
-$LogAnalyticsWorkspaceName = "Insert your Log Analytics workspace name here"
+$SubscriptionId = ""
+$LogAnalyticsResourceGroup = ""
+$LogAnalyticsWorkspaceName = ""
+
+# Check if the variables are populated
+if ([string]::IsNullOrEmpty($SubscriptionId) -or [string]::IsNullOrEmpty($LogAnalyticsResourceGroup) -or [string]::IsNullOrEmpty($LogAnalyticsWorkspaceName)) {
+    Write-Host "Please fill in the SubscriptionId, LogAnalyticsResourceGroup, and LogAnalyticsWorkspaceName variables before running."
+    exit 1
+}
 
 # This function gets all threat indicators from the Log Analytics workspace and deletes them.
 function Get-AllThreatIndicators {

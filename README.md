@@ -17,7 +17,7 @@ Make sure you are logged in with `az login` prior to executing the script.
 
 Follow the instructions below to use the script:
 
-1. **Define Variables**: Set the necessary variables including `SubscriptionId`, `LogAnalyticsResourceGroup`, `LogAnalyticsWorkspaceName`, and `LaAPIHeaders`.
+1. **Define Variables**: Set the necessary variables for your environment including `SubscriptionId`, `LogAnalyticsResourceGroup` and `LogAnalyticsWorkspaceName`.
 
 ```powershell
 $SubscriptionId = "Insert your subscription ID here"
